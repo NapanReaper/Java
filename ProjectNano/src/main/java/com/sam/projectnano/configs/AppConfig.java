@@ -39,9 +39,9 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public DriverManagerDataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        dataSource.setUrl("jdbc:sqlserver://localhost:1433;databaseName=NanoLab10");
+        dataSource.setUrl("jdbc:sqlserver://localhost:1433;databaseName=MovieNano");
         dataSource.setUsername("sa");
-        dataSource.setPassword("Wh@tthefuck123");
+        dataSource.setPassword("123456");
         return dataSource;
     }
 

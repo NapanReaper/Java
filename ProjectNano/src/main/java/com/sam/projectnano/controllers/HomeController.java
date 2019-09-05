@@ -5,8 +5,12 @@
  */
 package com.sam.projectnano.controllers;
 
+import com.sam.projectnano.repositories.HomeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -14,10 +18,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class HomeController {
-
-    @RequestMapping("/")
-    public String index() {
-        return "index";
+    
+    @Autowired
+    private HomeRepository homeRepository;
+    
+    @RequestMapping(value = "/")
+    public ModelAndView index() {
+        Object b= homeRepository.findAll();
+        ModelAndView m = new ModelAndView("index");;
+        m.addObject("movieList", homeRepository.findAll());
+        return m;
     }
 
 }
