@@ -38,7 +38,7 @@ public class HibernateConfiguration {
     public LocalSessionFactoryBean sessionFactoryBean() {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
-        sessionFactoryBean.setPackagesToScan(new String[]{"com.sam.lab10.dtos"});
+        sessionFactoryBean.setPackagesToScan(new String[]{"com.sam.projectnano.dtos"});
         sessionFactoryBean.setHibernateProperties(hibernateProperties());
         return sessionFactoryBean;
     }

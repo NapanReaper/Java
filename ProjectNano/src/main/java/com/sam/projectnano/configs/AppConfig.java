@@ -22,11 +22,11 @@ import org.springframework.web.servlet.view.JstlView;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.sam.projectnano")
+@ComponentScan(basePackages = "com.sam")
 
 public class AppConfig extends WebMvcConfigurerAdapter {
 
-    @Bean(name = "ProjectView")
+    @Bean(name = "Lab10Views")
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class);
