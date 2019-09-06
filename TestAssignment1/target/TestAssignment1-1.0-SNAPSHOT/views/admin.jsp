@@ -1,6 +1,6 @@
 <%-- 
-    Document   : mian
-    Created on : Sep 6, 2019, 12:12:06 PM
+    Document   : admin
+    Created on : Sep 6, 2019, 12:23:35 PM
     Author     : Admin
 --%>
 
@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Customer Page</title>
+        <title>Admin Page</title>
     </head>
     <body>
-        <h1> ${member.role}'s Page</h1>
+        <h1>${member.role}'s Page</h1>
     </body>
 </html>

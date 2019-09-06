@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Customer Page</title>
     </head>
     <body>
-        <h1> ${role}'s Page</h1>
+        <h1> ${member.role}'s Page</h1>
     </body>
 </html>

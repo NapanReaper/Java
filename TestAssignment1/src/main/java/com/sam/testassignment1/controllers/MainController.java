@@ -33,9 +33,14 @@ public class MainController {
     public ModelAndView login(@RequestParam("username") String username, @RequestParam("password") String txtPassword) {
         ModelAndView m = new ModelAndView();
         if (memberRepository.checkLogin(username, txtPassword) != null) {
-            String role = memberRepository.checkLogin(username, txtPassword);
-            m.addObject("role", role);
-            m.setViewName("main");
+            Member member = memberRepository.checkLogin(username, txtPassword);
+            String role = member.getRole();
+            if (role.equals("admin")) {
+                m.setViewName("admin");
+            } else {
+                m.setViewName("main");
+            }
+            m.addObject("member", member);
         } else {
             m.setViewName("home");
             m.addObject("ERROR", "Wrong username or password");
