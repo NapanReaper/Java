@@ -14,8 +14,9 @@
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>  
     </head>
     <body>     
-        <input style="float: right;margin-right: 50px;width: 30%" type="text" id="searchMovie" onkeyup="loadMovie();" placeholder="Search..."/>        
- 
+        <input style="float: right;margin-right: 50px;width: 30%" 
+               type="text" id="searchMovie" onkeyup="loadMovie();" placeholder="Search..."/>        
+
         <div style="width: 100%" id="movie-list">
 
         </div>       

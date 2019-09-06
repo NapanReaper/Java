@@ -99,7 +99,7 @@
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
+                <span class="input-group-text" id="inputGroup-sizing-default">Trailer</span>
             </div>
             <input type="text" class="form-control" 
                    aria-label="Sizing example input" 
