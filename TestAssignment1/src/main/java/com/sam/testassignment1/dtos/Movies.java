@@ -15,7 +15,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.List;
+import javax.persistence.FetchType;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -24,40 +27,42 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "Movies")
-public class Movies implements Serializable{
-    
-        @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="MOV_ID")
-	@NotNull
-	private Long id;
-	
-	@Column(name="MOV_TITLE")
-	private String title;
-	
-	@Column(name="MOV_R_DTE")
-	private String date;
-	
-	@Column(name="MOV_LEN")
-	private String length;
-	
-	@Column(name="MOV_CAT")
-	private String category;
-	
-	@Column(name="MOV_LANG")
-	private String language;
-	
-	@Column(name="MOV_DSC")
-	private String description;
-	
-	@Column(name="MOV_CAST")
-	private String cast;
-	
-	@Column(name="MOV_IMAGE")
-	private String image;
-	
-	@Column(name="MOV_S")
-	private String status;
+public class Movies implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "MOV_ID")
+    @NotNull
+    private Long id;
+
+    @Column(name = "MOV_TITLE")
+    private String title;
+
+    @Column(name = "MOV_R_DTE")
+    private String date;
+
+    @Column(name = "MOV_LEN")
+    private String length;
+
+    @Column(name = "MOV_CAT")
+    private String category;
+
+    @Column(name = "MOV_LANG")
+    private String language;
+
+    @Column(name = "MOV_DSC")
+    private String description;
+
+    @Column(name = "MOV_CAST")
+    private String cast;
+
+    @Column(name = "MOV_IMAGE")
+    private String image;
+
+    @Column(name = "MOV_S")
+    private String status;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "movie_shedule")
+    private List<Schedule> listSchedule;
 
     public Long getId() {
         return id;
@@ -138,6 +143,5 @@ public class Movies implements Serializable{
     public void setStatus(String status) {
         this.status = status;
     }
-    
-            
+
 }
