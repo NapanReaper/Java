@@ -7,6 +7,9 @@ package com.sam.testassignment1.controllers;
 
 import com.sam.testassignment1.dtos.Movies;
 import com.sam.testassignment1.repositories.MovieRepository;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +27,7 @@ public class AdminController {
     @Autowired
     private MovieRepository movieRepo;
 
-    @RequestMapping(value = "mangaMovie", method = RequestMethod.GET)
+    @RequestMapping(value = "manageMovie", method = RequestMethod.GET)
     public ModelAndView getMovieList() {
         ModelAndView m = new ModelAndView("movie-list");
         m.addObject("movieList", movieRepo.findAll());
@@ -56,6 +59,33 @@ public class AdminController {
     public ModelAndView deactivateMovie(@RequestParam("id") Long id) {
         Movies m = movieRepo.findOne(id);
         m.setStatus("0");
+        movieRepo.save(m);
+        return getMovieList();
+    }
+
+    @RequestMapping(value = "updateMovie", method = RequestMethod.GET)
+    public ModelAndView updateMovie(
+            @RequestParam("id") Long id,
+            @RequestParam("title") String title,
+            @RequestParam("image") String image,
+            @RequestParam("category") String category,
+            @RequestParam("cast") String cast,
+            @RequestParam("length") int length,
+            @RequestParam("date") String date,
+            @RequestParam("language") String language,
+            @RequestParam("description") String description,
+            @RequestParam("trailer") String trailer) throws ParseException {
+        Movies m = movieRepo.findOne(id);
+        m.setTitle(title);
+        m.setCast(cast);
+        m.setCategory(category);
+        m.setDescription(description);
+        m.setImage(image);
+        m.setLanguage(language);
+        m.setLength(length);
+        m.setTrailer(trailer);
+        Date parsDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        m.setDate(parsDate);
         movieRepo.save(m);
         return getMovieList();
     }

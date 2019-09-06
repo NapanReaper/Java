@@ -10,6 +10,7 @@ package com.sam.testassignment1.dtos;
  * @author hoang
  */
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +21,7 @@ import javax.persistence.Table;
 import java.util.List;
 import javax.persistence.FetchType;
 import javax.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -39,10 +41,11 @@ public class Movies implements Serializable {
     private String title;
 
     @Column(name = "MOV_R_DTE")
-    private String date;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date date;
 
     @Column(name = "MOV_LEN")
-    private String length;
+    private int length;
 
     @Column(name = "MOV_CAT")
     private String category;
@@ -61,12 +64,15 @@ public class Movies implements Serializable {
 
     @Column(name = "MOV_S")
     private String status;
-    
-    @Column(name="MOV_Trailer")
+
+    @Column(name = "MOV_Trailer")
     private String trailer;
-    
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "movie_shedule")
     private List<Schedule> listSchedule;
+
+    public Movies() {
+    }
 
     public String getTrailer() {
         return trailer;
@@ -74,8 +80,7 @@ public class Movies implements Serializable {
 
     public void setTrailer(String trailer) {
         this.trailer = trailer;
-    }    
-    
+    }
 
     public Long getId() {
         return id;
@@ -93,19 +98,19 @@ public class Movies implements Serializable {
         this.title = title;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getLength() {
+    public int getLength() {
         return length;
     }
 
-    public void setLength(String length) {
+    public void setLength(int length) {
         this.length = length;
     }
 
@@ -155,6 +160,14 @@ public class Movies implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<Schedule> getListSchedule() {
+        return listSchedule;
+    }
+
+    public void setListSchedule(List<Schedule> listSchedule) {
+        this.listSchedule = listSchedule;
     }
 
 }
