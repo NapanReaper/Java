@@ -25,14 +25,19 @@ public class MainController {
 
     @Autowired
     private MemberRepository memberRepository;
-    
+
     @Autowired
     private MovieRepository movieRepository;
 
     @RequestMapping("/")
     public String getHome(ModelMap model) {
-        model.addAttribute("movieList",movieRepository.findAll());
+        model.addAttribute("movieList", movieRepository.findAll());
         return "main";
+    }
+
+    @RequestMapping("/login")
+    public String getHome() {
+        return "home";
     }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)

@@ -63,23 +63,23 @@
                 <h2>Featured Movies</h2>
                 <div class="row">
                     <c:forEach var="m" items="${movieList}">
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <article class="card">
-                            <header class="title-header">
-                                <h3>${m.title}</h3>
-                            </header>
-                            <div class="card-block">
-                                <div class="img-card">
-                                    <img src="${m.image}" alt="Movie" class="w-100" />
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <article class="card">
+                                <header class="title-header">
+                                    <h3>${m.title}</h3>
+                                </header>
+                                <div class="card-block">
+                                    <div class="img-card">
+                                        <img src="${m.image}" alt="Movie" class="w-100" />
+                                    </div>
+                                    <p class="tagline card-text text-xs-center">${m.description}</p>
+                                    <a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
                                 </div>
-                                <p class="tagline card-text text-xs-center">${m.description}</p>
-                                <a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
-                            </div>
-                        </article>
-                    </div>       
+                            </article>
+                        </div>       
                     </c:forEach>
-                    </div>          
-                    
+                </div>          
+
                 </div>
             </section>
         </main>

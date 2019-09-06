@@ -1,3 +1,8 @@
 com\sam\testassignment1\dtos\Member.class
+com\sam\testassignment1\dtos\Movies.class
+com\sam\testassignment1\repositories\MovieRepository.class
+com\sam\testassignment1\controllers\AdminController.class
 com\sam\testassignment1\controllers\MainController.class
+com\sam\testassignment1\dtos\TicketPrice.class
 com\sam\testassignment1\repositories\MemberRepository.class
+com\sam\testassignment1\dtos\Schedule.class
