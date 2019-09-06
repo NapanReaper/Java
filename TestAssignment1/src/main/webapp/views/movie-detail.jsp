@@ -91,7 +91,7 @@
                         </div>
 
                         <div id="trailer" class="tabcontent">
-                            <iframe width="600" height="600"
+                            <iframe width="100%" height="600"
                                     src="${d.trailer}">
                             </iframe>
                         </div>
