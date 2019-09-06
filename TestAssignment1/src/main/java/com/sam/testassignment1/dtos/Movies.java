@@ -61,8 +61,21 @@ public class Movies implements Serializable {
 
     @Column(name = "MOV_S")
     private String status;
+    
+    @Column(name="MOV_Trailer")
+    private String trailer;
+    
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "movie_shedule")
     private List<Schedule> listSchedule;
+
+    public String getTrailer() {
+        return trailer;
+    }
+
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
+    }    
+    
 
     public Long getId() {
         return id;

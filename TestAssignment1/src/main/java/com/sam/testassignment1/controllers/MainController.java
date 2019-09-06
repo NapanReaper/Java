@@ -6,8 +6,10 @@
 package com.sam.testassignment1.controllers;
 
 import com.sam.testassignment1.dtos.Member;
+import com.sam.testassignment1.dtos.Movies;
 import com.sam.testassignment1.repositories.MemberRepository;
 import com.sam.testassignment1.repositories.MovieRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -31,20 +33,30 @@ public class MainController {
     private MovieRepository movieRepository;
 
     @RequestMapping("/")
-    public String getHome(ModelMap model) {
-        model.addAttribute("movieList", movieRepository.findAll());
+    public String getHome() {
+
         return "main";
     }
-      @RequestMapping(value ="{id}",method = RequestMethod.GET)
-       public ModelAndView getDetail(@PathVariable("id") long id){          
-           ModelAndView m = new ModelAndView("movie-detail");
-           m.addObject("movieDetail",movieRepository.findOne(id));     
-           return m;
-       }
 
-    @RequestMapping("login")
-    public String getHome() {
+    @RequestMapping("home")
+    public String getLogin() {
+
         return "home";
+    }
+
+    @RequestMapping(value = "listMovie", method = RequestMethod.GET)
+    public ModelAndView listMovie(@RequestParam("search") String search) {
+        List<Movies> movies = movieRepository.findByTitle(search);
+        ModelAndView m = new ModelAndView("listMovie");
+        m.addObject("listMovie", movies);
+        return m;
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    public ModelAndView getDetail(@PathVariable("id") long id) {
+        ModelAndView m = new ModelAndView("movie-detail");
+        m.addObject("movieDetail", movieRepository.findOne(id));
+        return m;
     }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
