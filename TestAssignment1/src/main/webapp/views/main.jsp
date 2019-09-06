@@ -72,7 +72,9 @@
                                 <div class="img-card">
                                     <img src="${m.image}" alt="Movie" class="w-100" />
                                 </div>
-                                <p class="tagline card-text text-xs-center">${m.description}</p>
+                                <p class="tagline card-text text-xs-center">Thể loại: ${m.category}</p>
+                                 <p class="tagline card-text text-xs-center">Ngày khởi chiếu: ${m.date}</p>
+                                 <a href="${m.id}" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Xem Chi Tiết</a>
                                 <a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
                             </div>
                         </article>
