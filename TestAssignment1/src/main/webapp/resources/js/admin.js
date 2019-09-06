@@ -70,3 +70,13 @@ function deactivateMovie(id) {
         }
     });
 }
+function getMovieInfo(id) {
+    $.ajax({
+        type: 'GET',
+        url: "getMovieInfo",
+        data: {id: id},
+        success: function (a) {
+            $("#content").html(a);
+        }
+    });
+}

@@ -46,7 +46,7 @@
                             <button type="button" class="btn btn-success" onclick="activateMovie(${m.id})">Activate Movie</button>
                         </c:otherwise>
                     </c:choose>
-                    <button type="button" class="btn btn-info" onclick="updateMovie(${m.id})">Info</button>
+                    <button type="button" class="btn btn-info" onclick="getMovieInfo(${m.id})">Info</button>
                 </div>
             </div>
         </div>

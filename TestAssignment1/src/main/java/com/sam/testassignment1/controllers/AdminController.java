@@ -48,8 +48,8 @@ public class AdminController {
         return getMovieList();
     }
 
-    @RequestMapping(value = "updateMovie", method = RequestMethod.GET)
-    public ModelAndView updateMovie(@RequestParam("id") Long id) {
+    @RequestMapping(value = "getMovieInfo", method = RequestMethod.GET)
+    public ModelAndView getMovieInfo(@RequestParam("id") Long id) {
         ModelAndView m = new ModelAndView("movie-form");
         m.addObject("movie", movieRepo.findOne(id));
         return m;
