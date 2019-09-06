@@ -15,33 +15,97 @@
     <body>
         <h1>Movie Form</h1>
         <c:choose>
-            <c:when test="${not empty schedule.id}">
-                Update ${schedule.id}             
+            <c:when test="${not empty movie.id}">
+                <h3>Update ${movie.title}</h3>             
             </c:when>
             <c:otherwise>
-                Create a new Schedule   
+                <h3>Create a new Movie</h3>
             </c:otherwise>
         </c:choose>
         <br/>
-        <c:if test="${not empty clubs}">
-            Away <select id="away">
-                <c:forEach var="club" items="${clubs}">
-                    <option value="${club.id}">${club.name}</option>
-                </c:forEach>
-            </select><br/>
-            Home <select id="home">
-                <c:forEach var="club" items="${clubs}">
-                    <option value="${club.id}">${club.name}</option>
-                </c:forEach>
-            </select>
-        </c:if>
-        <br/>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Image Url</span>
+            </div>
+            <input type="text" class="form-control" 
+                   aria-label="Sizing example input" 
+                   aria-describedby="inputGroup-sizing-default"
+                   value="${movie.image}" id="image" onchange="loadImageFromUrl()"/>
+        </div>
+        <img src="${movie.image}"alt="Movie image cap" width="200px" height="225px" id="my_image"/><br/>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+            </div>
+            <input type="text" class="form-control" 
+                   aria-label="Sizing example input" 
+                   aria-describedby="inputGroup-sizing-default"
+                   value="${movie.title}" id="title">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Category</span>
+            </div>
+            <input type="text" class="form-control" 
+                   aria-label="Sizing example input" 
+                   aria-describedby="inputGroup-sizing-default"
+                   value="${movie.category}" id="category">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Cast</span>
+            </div>
+            <input type="text" class="form-control" 
+                   aria-label="Sizing example input" 
+                   aria-describedby="inputGroup-sizing-default"
+                   value="${movie.cast}" id="cast">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Length(minutes)</span>
+            </div>
+            <input type="number" class="form-control" 
+                   aria-label="Sizing example input" 
+                   aria-describedby="inputGroup-sizing-default"
+                   value="${movie.length}" id="cast">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Language</span>
+            </div>
+            <input type="text" class="form-control" 
+                   aria-label="Sizing example input" 
+                   aria-describedby="inputGroup-sizing-default"
+                   value="${movie.language}" id="cast">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Language</span>
+            </div>
+            <input type="text" class="form-control" 
+                   aria-label="Sizing example input" 
+                   aria-describedby="inputGroup-sizing-default"
+                   value="${movie.language}" id="cast">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
+            </div>
+            <input type="text" class="form-control" 
+                   aria-label="Sizing example input" 
+                   aria-describedby="inputGroup-sizing-default"
+                   value="${movie.description}" id="description">
+        </div>
         <c:choose>
-            <c:when test="${not empty schedule.id}" >
-                <button onclick="updateScedule(${schedule.id})">Save</button>
+            <c:when test="${not empty movie.id}" >
+                <br/>
+                <button type="button" class="btn btn-primary" 
+                        onclick="updateMovie(${movie.id})">Save Movie</button>
             </c:when>
             <c:otherwise>
-                <button onclick="createSchedule()">Create</button>
+                <br/>
+                <button type="button" class="btn btn-success"
+                        onclick="createMovie()">Create Movie </button>
             </c:otherwise>
         </c:choose>
     </body>

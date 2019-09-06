@@ -42,7 +42,7 @@ public class MainController {
            return m;
        }
 
-    @RequestMapping("/login")
+    @RequestMapping("login")
     public String getHome() {
         return "home";
     }

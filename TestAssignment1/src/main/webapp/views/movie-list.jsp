@@ -14,7 +14,7 @@
     </head>
     <body>
         <h3>Movie Page</h3>
-        <button type="button" class="btn btn-info">Add new Movie</button>
+        <button type="button" class="btn btn-info" onclick="loadMovieForm()">Add new Movie</button>
         <br/>
         <c:forEach var="m" items="${movieList}">
             <div class="card bg-light mb-3" style="width: 18rem;float: left;margin-left: 50px;margin-top: 20px" >

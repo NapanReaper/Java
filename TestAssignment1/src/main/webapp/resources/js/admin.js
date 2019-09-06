@@ -1,3 +1,6 @@
+function loadImageFromUrl() {
+    $('#my_image').attr('src', $('#image').val());
+}
 function manageMovie() {
     $.ajax({
         type: 'GET',
@@ -7,10 +10,29 @@ function manageMovie() {
         }
     });
 }
+function loadMovieForm() {
+    $.ajax({
+        type: 'GET',
+        url: "loadMovieForm",
+        success: function (a) {
+            $("#content").html(a);
+        }
+    });
+}
 function activateMovie(id) {
     $.ajax({
         type: 'GET',
         url: "activateMovie",
+        data: {id: id},
+        success: function (a) {
+            $("#content").html(a);
+        }
+    });
+}
+function updateMovie(id) {
+    $.ajax({
+        type: 'GET',
+        url: "updateMovie",
         data: {id: id},
         success: function (a) {
             $("#content").html(a);

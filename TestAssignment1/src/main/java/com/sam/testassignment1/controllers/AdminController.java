@@ -31,6 +31,12 @@ public class AdminController {
         return m;
     }
 
+    @RequestMapping(value = "loadMovieForm", method = RequestMethod.GET)
+    public ModelAndView loadMovieForm() {
+        ModelAndView m = new ModelAndView("movie-form");
+        return m;
+    }
+
     @RequestMapping(value = "activateMovie", method = RequestMethod.GET)
     public ModelAndView activateMovie(@RequestParam("id") Long id) {
         Movies m = movieRepo.findOne(id);
@@ -38,6 +44,14 @@ public class AdminController {
         movieRepo.save(m);
         return getMovieList();
     }
+
+    @RequestMapping(value = "updateMovie", method = RequestMethod.GET)
+    public ModelAndView updateMovie(@RequestParam("id") Long id) {
+        ModelAndView m = new ModelAndView("movie-form");
+        m.addObject("movie", movieRepo.findOne(id));
+        return m;
+    }
+
     @RequestMapping(value = "deactivateMovie", method = RequestMethod.GET)
     public ModelAndView deactivateMovie(@RequestParam("id") Long id) {
         Movies m = movieRepo.findOne(id);
