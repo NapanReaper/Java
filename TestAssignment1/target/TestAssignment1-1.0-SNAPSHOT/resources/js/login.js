@@ -27,14 +27,6 @@ function newEmployee() {
         flag = false;
         alert("Name, Email, Phone can't be empty. Please fill them.");
     }
-//    if (!validateEmail(email)) {
-//        flag = false;
-//        alert("Wrong format email. abc@gmail.com")
-//    }
-//    if (!validatePhone(phone)) {
-//        flag = false;
-//        alert("Wrong format phone. number length <=11 and >=10")
-//    }
     if (flag) {
         $.ajax({
             type: 'POST',

@@ -1,0 +1,45 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.sam.testassignment1.controllers;
+
+import com.sam.testassignment1.dtos.Member;
+import com.sam.testassignment1.repositories.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+/**
+ *
+ * @author Admin
+ */
+@Controller
+public class MainController {
+
+    @Autowired
+    private MemberRepository memberRepository;
+
+    @RequestMapping("/")
+    public String getHome() {
+        return "home";
+    }
+
+    @RequestMapping(value = "login", method = RequestMethod.POST)
+    public ModelAndView login(@RequestParam("username") String username, @RequestParam("password") String txtPassword) {
+        ModelAndView m = new ModelAndView();
+        if (memberRepository.checkLogin(username, txtPassword) != null) {
+            String role = memberRepository.checkLogin(username, txtPassword);
+            m.addObject("role", role);
+            m.setViewName("main");
+        } else {
+            m.setViewName("home");
+            m.addObject("ERROR", "Wrong username or password");
+        }
+        return m;
+    }
+}

@@ -6,19 +6,13 @@
 package com.sam.testassignment1.dtos;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -29,31 +23,26 @@ import javax.persistence.TemporalType;
 public class Member implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "firstName", length = 100)
-    private String firstName;
-    @Column(name = "lastName", length = 100)
-    private String lastName;
-    @Column(name = "username", length = 100)
-    private String username;
-    @Column(name = "password", length = 100)
+    @NotEmpty
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
-    @Column(name = "phone", length = 100)
-    private String phone;
-    @Column(name = "email", length = 100)
+    @NotEmpty
+    @Column(name = "FIRST_NAME", nullable = false)
+    private String firstName;
+    @NotEmpty
+    @Column(name = "LAST_Name", nullable = false)
+    private String lastName;
+    @NotEmpty
+    @Column(name = "EMAIL", nullable = false)
     private String email;
-    @Column(name = "description", length = 100)
-    private String description;
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "createDate", length = 100)
-    private Date createDate;
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updateTime", length = 100)
-    private Date updateTime;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "author")
-    private Set<Content> listContent;
+    @NotEmpty
+    @Column(name = "ROLE", nullable = false)
+    private String role;
+    @NotEmpty
+    @Column(name = "STATUS", columnDefinition = "bit default 0", nullable = false)
+    private boolean status;
 
     public Member() {
     }
@@ -82,12 +71,12 @@ public class Member implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -98,52 +87,20 @@ public class Member implements Serializable {
         this.password = password;
     }
 
-    public String getPhone() {
-        return phone;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
-    public String getEmail() {
-        return email;
+    public String getRole() {
+        return role;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public Set<Content> getListContent() {
-        return listContent;
-    }
-
-    public void setListContent(Set<Content> listContent) {
-        this.listContent = listContent;
+    public void setRole(String role) {
+        this.role = role;
     }
 
 }
