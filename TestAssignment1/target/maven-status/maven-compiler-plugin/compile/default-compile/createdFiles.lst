@@ -1,0 +1,6 @@
+com\sam\testassignment1\dtos\Member.class
+com\sam\testassignment1\repositories\ContentRepository.class
+com\sam\testassignment1\dtos\Content.class
+com\sam\testassignment1\controllers\MemberController.class
+com\sam\testassignment1\controllers\ContentController.class
+com\sam\testassignment1\repositories\MemberRepository.class
