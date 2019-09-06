@@ -75,10 +75,15 @@
                                     <p class="tagline card-text text-xs-center">${m.description}</p>
                                     <a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
                                 </div>
-                            </article>
-                        </div>       
+                                <p class="tagline card-text text-xs-center">Thể loại: ${m.category}</p>
+                                 <p class="tagline card-text text-xs-center">Ngày khởi chiếu: ${m.date}</p>
+                                 <a href="${m.id}" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Xem Chi Tiết</a>
+                                <a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
+                            </div>
+                        </article>
+                    </div>
                     </c:forEach>
-                </div>          
+                </div>
 
                 </div>
             </section>
