@@ -7,10 +7,16 @@ package com.sam.testassignment1.controllers;
 
 import com.sam.testassignment1.dtos.Member;
 import com.sam.testassignment1.dtos.Movies;
+import com.sam.testassignment1.dtos.Schedule;
 import com.sam.testassignment1.repositories.MemberRepository;
 import com.sam.testassignment1.repositories.MovieRepository;
+import com.sam.testassignment1.repositories.ScheduleRepository;
 import com.sam.testassignment1.repositories.TicketPriceRepository;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +40,9 @@ public class MainController {
     
     @Autowired
     private TicketPriceRepository ticketPriceRepository;
+    
+    @Autowired
+    private ScheduleRepository scheduleRepository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getHome() {
@@ -45,6 +54,10 @@ public class MainController {
     public String getLogin() {
 
         return "home";
+    }
+    @RequestMapping(value = "listMovieByDate")
+    public String getDetail(){
+        return "listMovieByDate";
     }
 
     @RequestMapping("loadRegister")
@@ -76,6 +89,22 @@ public class MainController {
         List<Movies> movies = movieRepository.findByTitle(search);
         ModelAndView m = new ModelAndView("listMovie");
         m.addObject("listMovie", movies);
+        return m;
+    }  
+
+    
+    
+    @RequestMapping(value = "movieByDate",method = RequestMethod.POST)
+     public ModelAndView movieByDate(@RequestParam("search") String search)  {
+         ModelAndView m = new ModelAndView("movieByDate");          
+        try {
+             SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");  
+             List<Schedule> movies;  movies = scheduleRepository.findByDate(s.parse(search));
+             m.addObject("movieByDate", movies);
+        } catch (ParseException ex) {
+            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+       
         return m;
     }
 

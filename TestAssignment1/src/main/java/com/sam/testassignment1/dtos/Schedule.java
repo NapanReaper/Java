@@ -5,8 +5,10 @@
  */
 package com.sam.testassignment1.dtos;
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -45,8 +47,8 @@ public class Schedule {
     private String t5;
 
     @Column(name = "CNM_DTE")
-    private String date;
-    @ManyToOne
+    private Date date;
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "MOV_ID", referencedColumnName = "MOV_ID")
     private Movies movie_shedule;
 
@@ -109,13 +111,15 @@ public class Schedule {
         this.t5 = t5;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
+
+
 
     public Movies getMovie_shedule() {
         return movie_shedule;

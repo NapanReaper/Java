@@ -15,7 +15,8 @@
     </head>
     <body>     
         <input style="float: right;margin-right: 50px;width: 30%" 
-               type="text" id="searchMovie" onkeyup="loadMovie();" placeholder="Search..."/>        
+               type="text" id="searchMovie" onkeyup="loadMovie();" placeholder="Search..."/>    
+        <a href="listMovieByDate">Xem lịch chiếu</a>
 
         <div style="width: 100%" id="movie-list">
 
