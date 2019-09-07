@@ -9,6 +9,7 @@ import com.sam.testassignment1.dtos.Member;
 import com.sam.testassignment1.dtos.Movies;
 import com.sam.testassignment1.repositories.MemberRepository;
 import com.sam.testassignment1.repositories.MovieRepository;
+import com.sam.testassignment1.repositories.TicketPriceRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,9 @@ public class MainController {
 
     @Autowired
     private MovieRepository movieRepository;
+    
+    @Autowired
+    private TicketPriceRepository ticketPriceRepository;
 
     @RequestMapping("/")
     public String getHome() {
@@ -56,6 +60,13 @@ public class MainController {
     public ModelAndView getDetail(@PathVariable("id") long id) {
         ModelAndView m = new ModelAndView("movie-detail");
         m.addObject("movieDetail", movieRepository.findOne(id));
+        return m;
+    }
+    
+    @RequestMapping(value = "ticket-price",method = RequestMethod.GET)
+    public ModelAndView getTicketPrice(){
+        ModelAndView m = new ModelAndView("ticket-price");
+        m.addObject("ticketPrice", ticketPriceRepository.findAll());
         return m;
     }
 
