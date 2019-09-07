@@ -108,7 +108,7 @@
         </div>
         <div>
             <iframe width="200" height="200" id="trailer-content" 
-                    src="${movie.trailer}">
+                    src="${movie.trailer}" frameborder="0" allowfullscreen>
             </iframe>
         </div>
         <c:choose>

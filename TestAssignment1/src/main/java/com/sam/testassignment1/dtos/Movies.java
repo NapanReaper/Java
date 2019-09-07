@@ -20,7 +20,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
 import javax.persistence.FetchType;
-import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -32,9 +31,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Movies implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MOV_ID")
-    @NotNull
     private Long id;
 
     @Column(name = "MOV_TITLE")
@@ -62,8 +60,8 @@ public class Movies implements Serializable {
     @Column(name = "MOV_IMAGE")
     private String image;
 
-    @Column(name = "MOV_S")
-    private String status;
+    @Column(name = "MOV_S", columnDefinition = "bit default 1", nullable = false)
+    private boolean status;
 
     @Column(name = "MOV_Trailer")
     private String trailer;
@@ -154,11 +152,11 @@ public class Movies implements Serializable {
         this.image = image;
     }
 
-    public String getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 

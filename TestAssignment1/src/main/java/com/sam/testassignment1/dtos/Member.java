@@ -29,11 +29,11 @@ public class Member implements Serializable {
     @Column(name = "PASSWORD", nullable = false)
     private String password;
     @NotEmpty
-    @Column(name = "FIRST_NAME", nullable = false)
-    private String firstName;
+    @Column(name = "FULLNAME", nullable = false)
+    private String fullname;
     @NotEmpty
-    @Column(name = "LAST_Name", nullable = false)
-    private String lastName;
+    @Column(name = "PHONE", nullable = false)
+    private String phone;
     @NotEmpty
     @Column(name = "EMAIL", nullable = false)
     private String email;
@@ -55,20 +55,20 @@ public class Member implements Serializable {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {

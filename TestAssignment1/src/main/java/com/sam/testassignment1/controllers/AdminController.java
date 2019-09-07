@@ -43,7 +43,7 @@ public class AdminController {
     @RequestMapping(value = "activateMovie", method = RequestMethod.GET)
     public ModelAndView activateMovie(@RequestParam("id") Long id) {
         Movies m = movieRepo.findOne(id);
-        m.setStatus("1");
+        m.setStatus(true);
         movieRepo.save(m);
         return getMovieList();
     }
@@ -58,7 +58,7 @@ public class AdminController {
     @RequestMapping(value = "deactivateMovie", method = RequestMethod.GET)
     public ModelAndView deactivateMovie(@RequestParam("id") Long id) {
         Movies m = movieRepo.findOne(id);
-        m.setStatus("0");
+        m.setStatus(false);
         movieRepo.save(m);
         return getMovieList();
     }
@@ -76,6 +76,33 @@ public class AdminController {
             @RequestParam("description") String description,
             @RequestParam("trailer") String trailer) throws ParseException {
         Movies m = movieRepo.findOne(id);
+        m.setTitle(title);
+        m.setCast(cast);
+        m.setCategory(category);
+        m.setDescription(description);
+        m.setImage(image);
+        m.setLanguage(language);
+        m.setLength(length);
+        m.setTrailer(trailer);
+        Date parsDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        m.setDate(parsDate);
+        movieRepo.save(m);
+        return getMovieList();
+    }
+
+    @RequestMapping(value = "createMovie", method = RequestMethod.GET)
+    public ModelAndView createMovie(
+            @RequestParam("title") String title,
+            @RequestParam("image") String image,
+            @RequestParam("category") String category,
+            @RequestParam("cast") String cast,
+            @RequestParam("length") int length,
+            @RequestParam("date") String date,
+            @RequestParam("language") String language,
+            @RequestParam("description") String description,
+            @RequestParam("trailer") String trailer) throws ParseException {
+        Movies m = new Movies();
+        m.setStatus(true);
         m.setTitle(title);
         m.setCast(cast);
         m.setCategory(category);
