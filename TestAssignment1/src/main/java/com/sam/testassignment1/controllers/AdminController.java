@@ -5,7 +5,9 @@
  */
 package com.sam.testassignment1.controllers;
 
+import com.sam.testassignment1.dtos.Member;
 import com.sam.testassignment1.dtos.Movies;
+import com.sam.testassignment1.repositories.MemberRepository;
 import com.sam.testassignment1.repositories.MovieRepository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,23 +25,32 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class AdminController {
-
+    
     @Autowired
     private MovieRepository movieRepo;
-
+    @Autowired
+    private MemberRepository memRepo;
+    
     @RequestMapping(value = "manageMovie", method = RequestMethod.GET)
     public ModelAndView getMovieList() {
         ModelAndView m = new ModelAndView("movie-list");
         m.addObject("movieList", movieRepo.findAll());
         return m;
     }
-
+    
+    @RequestMapping(value = "manageMember", method = RequestMethod.GET)
+    public ModelAndView getMemberList() {
+        ModelAndView m = new ModelAndView("member-list");
+        m.addObject("memberList", memRepo.getAllCustomerAccount());
+        return m;
+    }
+    
     @RequestMapping(value = "loadMovieForm", method = RequestMethod.GET)
     public ModelAndView loadMovieForm() {
         ModelAndView m = new ModelAndView("movie-form");
         return m;
     }
-
+    
     @RequestMapping(value = "activateMovie", method = RequestMethod.GET)
     public ModelAndView activateMovie(@RequestParam("id") Long id) {
         Movies m = movieRepo.findOne(id);
@@ -47,14 +58,32 @@ public class AdminController {
         movieRepo.save(m);
         return getMovieList();
     }
+    
+    @RequestMapping(value = "activateMember", method = RequestMethod.GET)
+    public ModelAndView activateMember(@RequestParam("id") Long id) {
+        Member m = memRepo.findOne(id);
+        m.setStatus(true);
+        m.setMessage("");
+        memRepo.save(m);
+        return getMemberList();
+    }
 
+    @RequestMapping(value = "banMember", method = RequestMethod.GET)
+    public ModelAndView banMember(@RequestParam("id") Long id) {
+        Member m = memRepo.findOne(id);
+        m.setStatus(false);
+        m.setMessage("Account banned");
+        memRepo.save(m);
+        return getMemberList();
+    }
+    
     @RequestMapping(value = "getMovieInfo", method = RequestMethod.GET)
     public ModelAndView getMovieInfo(@RequestParam("id") Long id) {
         ModelAndView m = new ModelAndView("movie-form");
         m.addObject("movie", movieRepo.findOne(id));
         return m;
     }
-
+    
     @RequestMapping(value = "deactivateMovie", method = RequestMethod.GET)
     public ModelAndView deactivateMovie(@RequestParam("id") Long id) {
         Movies m = movieRepo.findOne(id);
@@ -62,7 +91,7 @@ public class AdminController {
         movieRepo.save(m);
         return getMovieList();
     }
-
+    
     @RequestMapping(value = "updateMovie", method = RequestMethod.GET)
     public ModelAndView updateMovie(
             @RequestParam("id") Long id,
@@ -89,7 +118,7 @@ public class AdminController {
         movieRepo.save(m);
         return getMovieList();
     }
-
+    
     @RequestMapping(value = "createMovie", method = RequestMethod.GET)
     public ModelAndView createMovie(
             @RequestParam("title") String title,

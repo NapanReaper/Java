@@ -23,30 +23,30 @@
             <section class="movies" id="movies">
                 <h2>Now Showing Movies</h2>
                 <c:if test="${not empty listMovie}">
-              
-                <div class="row">
-                    <c:forEach var="m" items="${listMovie}">
-                        <c:if test="${m.status ne 0}">
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <article class="card">
-                                <header class="title-header">
-                                    <h3>${m.title}</h3>
-                                </header>
-                                <div  class="card-block">
-                                    <div class="img-card">
-                                        <img src="${m.image}" alt="MoviePic" class="w-100" />
-                                    </div>
-                                    <p class="tagline card-text text-xs-center">Thể loại: ${m.category}</p>
-                                    <p class="tagline card-text text-xs-center">Ngày khởi chiếu: ${m.date}</p>
-                                    <a href="${m.id}" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Xem Chi Tiết</a>
-                                    <a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
-                                </div>
-                            </article>
-                        </div>  
-                         </c:if>
-                    </c:forEach>
-                </div>
-               
+
+                    <div class="row">
+                        <c:forEach var="m" items="${listMovie}">
+                            <c:if test="${m.status eq true}">
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <article class="card">
+                                        <header class="title-header">
+                                            <h3>${m.title}</h3>
+                                        </header>
+                                        <div  class="card-block">
+                                            <div class="img-card">
+                                                <img src="${m.image}" alt="MoviePic" class="w-100" />
+                                            </div>
+                                            <p class="tagline card-text text-xs-center">Thể loại: ${m.category}</p>
+                                            <p class="tagline card-text text-xs-center">Ngày khởi chiếu: ${m.date}</p>
+                                            <a href="${m.id}" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Xem Chi Tiết</a>
+                                            <a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
+                                        </div>
+                                    </article>
+                                </div>  
+                            </c:if>
+                        </c:forEach>
+                    </div>
+
                 </c:if>
                 <c:if test="${empty listMovie}">
                     <h2> Không tìm thấy phim </h2>

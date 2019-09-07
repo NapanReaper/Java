@@ -17,8 +17,15 @@
     </head>
     <body>
         <h1>${member.role}'s Page</h1>
-        <div style="float:left">
-            <button onclick="manageMovie()">Manage Movie</button>
+        <div style="float:left;margin-left: 50px;"  >
+            <div style="float:left; width: fit-content;padding: 20px">
+                <button type="button" class="btn btn-secondary" 
+                        onclick="manageMovie()">Manage Movie</button>
+            </div>
+            <div style="float:bottom; width: fit-content;padding: 20px">
+                <button type="button" 
+                        class="btn btn-secondary" onclick="manageMember()">Manage Member</button>
+            </div>
         </div>
         <div id="content"style="float: left;margin-left: 50px"></div>
     </body>

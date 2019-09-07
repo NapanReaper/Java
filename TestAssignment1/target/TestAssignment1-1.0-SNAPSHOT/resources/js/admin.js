@@ -14,6 +14,15 @@ function manageMovie() {
         }
     });
 }
+function manageMember() {
+    $.ajax({
+        type: 'GET',
+        url: "manageMember",
+        success: function (a) {
+            $("#content").html(a);
+        }
+    });
+}
 function loadMovieForm() {
     $.ajax({
         type: 'GET',
@@ -27,6 +36,26 @@ function activateMovie(id) {
     $.ajax({
         type: 'GET',
         url: "activateMovie",
+        data: {id: id},
+        success: function (a) {
+            $("#content").html(a);
+        }
+    });
+}
+function activateMember(id) {
+    $.ajax({
+        type: 'GET',
+        url: "activateMember",
+        data: {id: id},
+        success: function (a) {
+            $("#content").html(a);
+        }
+    });
+}
+function banMember(id) {
+    $.ajax({
+        type: 'GET',
+        url: "banMember",
         data: {id: id},
         success: function (a) {
             $("#content").html(a);
