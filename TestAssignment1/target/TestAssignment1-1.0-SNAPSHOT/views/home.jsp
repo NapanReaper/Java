@@ -19,8 +19,10 @@
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>
+        <script src="resources/js/login.js" type="text/javascript"></script>
     </head>
     <body>
+
         <main class="login-form">
             <div class="cotainer">
                 <div class="row justify-content-center">
@@ -50,14 +52,15 @@
                                         </div>
                                         <span style="color: red">${ERROR}</span>
                                     </div>
-                                    <a href="/TestAssignment1/register">Click here to Register</a>
+                                    <button type="button" class="btn btn-primary" onclick="loadRegister()">Click here to Register</button>
                             </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+        </main>
+        <div id="content"> 
         </div>
-    </main>
-</body>
+    </body>
 </html>

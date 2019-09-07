@@ -15,6 +15,6 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-    @Query("select m from Member m where m.email = ?1 and m.password = ?2 and status=1")
+    @Query("select m from Member m where m.email = ?1 and m.password = ?2")
     public Member checkLogin(String username, String password);
 }

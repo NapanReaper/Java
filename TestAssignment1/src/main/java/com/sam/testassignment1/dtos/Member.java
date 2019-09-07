@@ -5,6 +5,7 @@
  */
 package com.sam.testassignment1.dtos;
 
+import com.sun.istack.internal.NotNull;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,23 +26,18 @@ public class Member implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty
     @Column(name = "PASSWORD", nullable = false)
     private String password;
-    @NotEmpty
     @Column(name = "FULLNAME", nullable = false)
     private String fullname;
-    @NotEmpty
     @Column(name = "PHONE", nullable = false)
     private String phone;
-    @NotEmpty
     @Column(name = "EMAIL", nullable = false)
     private String email;
-    @NotEmpty
     @Column(name = "ROLE", nullable = false)
     private String role;
-    @NotEmpty
-    @Column(name = "STATUS", columnDefinition = "bit default 0", nullable = false)
+    @NotNull
+    @Column(name = "STATUS", columnDefinition = "bit default 0")
     private boolean status;
     @Column(name = "MESSAGE")
     private String message;

@@ -12,7 +12,6 @@ import com.sam.testassignment1.repositories.MovieRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,16 +31,40 @@ public class MainController {
     @Autowired
     private MovieRepository movieRepository;
 
-    @RequestMapping("/")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getHome() {
 
         return "main";
     }
 
-    @RequestMapping("home")
+    @RequestMapping("/home")
     public String getLogin() {
 
         return "home";
+    }
+
+    @RequestMapping("loadRegister")
+    public ModelAndView loadRegister() {
+        ModelAndView m = new ModelAndView("registerAccount");
+        return m;
+    }
+
+    @RequestMapping(value = "saveNewCustomer", method = RequestMethod.POST)
+    public ModelAndView saveNewCustomer(@RequestParam("email") String email,
+            @RequestParam("fullname") String fullname,
+            @RequestParam("phone") String phone,
+            @RequestParam("password") String password) {
+        ModelAndView mv = new ModelAndView("blank");
+        Member m = new Member();
+        m.setEmail(email);
+        m.setFullname(fullname);
+        m.setPassword(password);
+        m.setPhone(phone);
+        m.setRole("user");
+        m.setStatus(true);
+        m.setMessage("");
+        memberRepository.save(m);
+        return mv;
     }
 
     @RequestMapping(value = "listMovie", method = RequestMethod.GET)
@@ -64,13 +87,20 @@ public class MainController {
         ModelAndView m = new ModelAndView();
         if (memberRepository.checkLogin(username, txtPassword) != null) {
             Member member = memberRepository.checkLogin(username, txtPassword);
-            String role = member.getRole();
-            if (role.equals("admin")) {
-                m.setViewName("admin");
+            boolean status = member.isStatus();
+            if (status) {
+                String role = member.getRole();
+                if (role.equals("admin")) {
+                    m.setViewName("admin");
+                } else {
+                    m.setViewName("main");
+                }
+                m.addObject("member", member);
             } else {
-                m.setViewName("main");
+                String message = member.getMessage();
+                m.setViewName("home");
+                m.addObject("ERROR", message);
             }
-            m.addObject("member", member);
         } else {
             m.setViewName("home");
             m.addObject("ERROR", "Wrong username or password");

@@ -1,41 +1,31 @@
-function loadAddNewEmployee() {
+function loadRegister() {
     $.ajax({
-        type: 'POST',
-        url: "addNewEmployee",
+        type: 'GET',
+        url: "loadRegister",
         success: function (a) {
-            $("#div-control-employee").html(a);
+            $("#content").html(a);
         }
     });
 }
-function detailEmployee(b) {
-    var id = $(b).data("id");
-    $.ajax({
-        type: 'POST',
-        url: "editNewEmployee",
-        data: {id: id},
-        success: function (a) {
-            $("#div-control-employee").html(a);
-        }
-    });
-}
-function newEmployee() {
-    var name = $("#txtNameEmployee").val();
-    var email = $("#txtEmailEmployee").val();
-    var phone = $("#txtPhoneEmployee").val();
+
+function saveNewCustomer() {
+    var email = $("#email").val();
+    var phone = $("#phone").val();
+    var fullname = $("#fullname").val();
+    var password = $("#password").val();
     var flag = true;
-    if (name.trim() == "" || email.trim() == "" || phone.trim() == "") {
+    if (email.trim() == "" || email.trim() == "" || phone.trim() == "" || fullname.trim() == "") {
         flag = false;
-        alert("Name, Email, Phone can't be empty. Please fill them.");
+        alert("Email, Phone,Fullname can't be empty. Please fill them.");
     }
     if (flag) {
         $.ajax({
             type: 'POST',
-            url: "submitNewEmployee",
-            data: {name: name, email: email, phone: phone},
+            url: "saveNewCustomer",
+            data: {email: email, phone: phone, fullname: fullname, password: password},
             success: function (a) {
-                alert(a);
-                loadListEmployee();
-                loadAddNewEmployee();
+                alert("Congratulations! Your account has been created");
+                $("#content").html(a);
             }
         });
     }
