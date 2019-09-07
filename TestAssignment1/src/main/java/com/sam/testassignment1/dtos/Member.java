@@ -43,6 +43,8 @@ public class Member implements Serializable {
     @NotEmpty
     @Column(name = "STATUS", columnDefinition = "bit default 0", nullable = false)
     private boolean status;
+    @Column(name = "MESSAGE")
+    private String message;
 
     public Member() {
     }
@@ -101,6 +103,14 @@ public class Member implements Serializable {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
 }
