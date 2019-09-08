@@ -17,6 +17,7 @@
         <input style="float: right;margin-right: 50px;width: 30%" 
                type="text" id="searchMovie" onkeyup="loadMovie();" placeholder="Search..."/>    
         <a href="listMovieByDate">Xem lịch chiếu</a>
+        <a href="ticket-price">Xem giá vé</a>
 
         <div style="width: 100%" id="movie-list">
 
