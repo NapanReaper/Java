@@ -6,6 +6,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -66,7 +67,7 @@
                     <h3>${d.title}</h3>    
                     <table border="2" style="border: none;width: 200%">
 
-                        <tr><td>Khởi chiếu: ${d.date}</td></tr>
+                        <tr><td>Khởi chiếu:<fmt:formatDate value="${d.date}" pattern="dd-MMM-yy"/></td></tr>
                         <tr> <td>Loại phim: ${d.category}</td></tr>
                         <tr> <td>Diễn viên: ${d.cast}</td></tr>
                         <tr> <td>Thời lượng: ${d.length}</td></tr> 
@@ -96,8 +97,23 @@
                             </iframe>
                         </div>
                         <div id="schedule" class="tabcontent">
-                            <h3>Tokyo</h3>
-                            <p>Tokyo is the capital of Japan.</p>
+                            <c:forEach var="c" items="${movieDetail.listSchedule}">                           
+                                <table border="1">
+                                    <thead>
+                                        <tr>                                      
+                                            <th><fmt:formatDate value="${c.date}" pattern="dd-MMM-yy"/></th>                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        <tr><td>${c.t1}</td></tr>
+                                        <tr><td>${c.t2}</td></tr>
+                                        <tr><td>${c.t3}</td></tr>
+                                        <tr><td>${c.t4}</td></tr>      
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </c:forEach>
                         </div>
 
                         </iframe>     

@@ -10,6 +10,7 @@ package com.sam.testassignment1.dtos;
  * @author hoang
  */
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -96,7 +97,7 @@ public class Movies implements Serializable {
         this.title = title;
     }
 
-    public Date getDate() {
+    public Date getDate() {     
         return date;
     }
 

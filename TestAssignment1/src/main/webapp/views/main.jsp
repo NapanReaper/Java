@@ -10,17 +10,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home Page</title>     
-        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>  
+        <title>Home Page</title>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>
     </head>
     <body>
         <jsp:include page="header.jsp"></jsp:include>
-        <input style="float: right;margin-right: 50px;width: 30%" 
-               type="text" id="searchMovie" onkeyup="loadMovie();" placeholder="Search..."/>    
+        <input style="float: right;margin-right: 50px;width: 30%"
+               type="text" id="searchMovie" onkeyup="loadMovie();" placeholder="Search..."/>
+        <a href="listMovieByDate">Xem lịch chiếu</a>
+        <a href="ticket-price">Xem giá vé</a>
 
         <div style="width: 100%" id="movie-list">
 
-        </div>       
+        </div>
         <script>
             function loadMovie() {
                 var search = $("#searchMovie").val();
