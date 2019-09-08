@@ -14,6 +14,7 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>
+        <link rel="stylesheet" href="resources/css/movieByDate.css">
         <style>
             body {font-family: Arial;}
 
@@ -62,17 +63,25 @@
                 <div class="col-xs-4 item-photo">
                     <img style="max-width:100%;" src="${d.image}" />
                 </div>
-                <div class="col-xs-5" style="border:0px solid gray">
-                    <!-- Datos del vendedor y titulo del producto -->
-                    <h3>${d.title}</h3>    
-                    <table border="2" style="border: none;width: 200%">
-
-                        <tr><td>Khởi chiếu:<fmt:formatDate value="${d.date}" pattern="dd-MMM-yy"/></td></tr>
-                        <tr> <td>Loại phim: ${d.category}</td></tr>
-                        <tr> <td>Diễn viên: ${d.cast}</td></tr>
-                        <tr> <td>Thời lượng: ${d.length}</td></tr> 
-                        <tr><td>Ngôn ngữ: ${d.language}</td><tr/>                   
-                    </table>
+                <div class="col-xs-5" style="border:0px solid gray">              
+                    <div class="container">
+                        <div class="row row-flex">                     
+                                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                    <div class="price-table pt-bg-red">
+                                        <div>
+                                            <span>${d.title}</span>           
+                                        </div>
+                                        <ul>
+                                            <li>Khởi chiếu:<fmt:formatDate value="${d.date}" pattern="dd-MMM-yy"/></li>
+                                            <li>Loại phim: ${d.category}</li>
+                                            <li>Diễn viên: ${d.cast}</li>
+                                            <li>Thời lượng: ${d.length}</li>
+                                            <li>Ngôn ngữ: ${d.language}</li>
+                                        </ul>        
+                                    </div>
+                                </div>                  
+                        </div>
+                    </div>
                 </div>                              
 
                 <div class="col-xs-9">
@@ -96,27 +105,28 @@
                                     src="${d.trailer}">
                             </iframe>
                         </div>
-                        <div id="schedule" class="tabcontent">
-                            <c:forEach var="c" items="${movieDetail.listSchedule}">                           
-                                <table border="1">
-                                    <thead>
-                                        <tr>                                      
-                                            <th><fmt:formatDate value="${c.date}" pattern="dd-MMM-yy"/></th>                                           
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                        <tr><td>${c.t1}</td></tr>
-                                        <tr><td>${c.t2}</td></tr>
-                                        <tr><td>${c.t3}</td></tr>
-                                        <tr><td>${c.t4}</td></tr>      
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </c:forEach>
-                        </div>
-
-                        </iframe>     
+                        <div id="schedule" class="tabcontent">                        
+                            <div class="container">
+                                <div class="row row-flex">
+                                    <c:forEach var="c" items="${movieDetail.listSchedule}">
+                                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                            <div class="price-table pt-bg-blue">
+                                                <div>
+                                                    <span><fmt:formatDate value="${c.date}" pattern="dd-MMM-yy"/></span>           
+                                                </div>
+                                                <ul>
+                                                    <li>${c.t1}</li>
+                                                    <li>${c.t2}</li>
+                                                    <li>${c.t3}</li>
+                                                    <li>${c.t4}</li>
+                                                    <li>${c.t5}</li>
+                                                </ul>        
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+                            </div>
+                        </div>                 
                     </div>
                 </div>		
             </div>

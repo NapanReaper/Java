@@ -10,13 +10,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Trang tìm kiếm</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     </head>
     <body>
-
         <jsp:include page="header.jsp"></jsp:include>
-        Date: <input type="date" id="scheduleDate" onchange="loadMovie();" >
+        Chọn ngày <input type="date" id="scheduleDate" onchange="loadMovie();" >
         <div id="movie-list" >
 
         </div>
@@ -31,10 +30,7 @@
                         $("#movie-list").html(a);
                     }
                 });
-            }
-            $(document).ready(function () {
-                loadMovie();
-            });
+            }           
         </script>
 
     </body>
