@@ -22,7 +22,6 @@
         <script src="resources/js/login.js" type="text/javascript"></script>
     </head>
     <body>
-
         <main class="login-form">
             <div class="cotainer">
                 <div class="row justify-content-center">

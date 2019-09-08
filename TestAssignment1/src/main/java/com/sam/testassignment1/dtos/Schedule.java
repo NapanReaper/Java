@@ -47,7 +47,8 @@ public class Schedule {
     @Column(name = "CNM_S_5")
     private String t5;
 
-    @Column(name = "CNM_DTE") 
+    @Column(name = "CNM_DTE")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date date;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "MOV_ID", referencedColumnName = "MOV_ID")
@@ -119,8 +120,6 @@ public class Schedule {
     public void setDate(Date date) {
         this.date = date;
     }
-
-
 
     public Movies getMovie_shedule() {
         return movie_shedule;
