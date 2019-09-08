@@ -7,7 +7,15 @@ function loadRegister() {
         }
     });
 }
-
+function confirmPassword() {
+    var password = $("#password").val();
+    var confirm_password = $("#confirm").val();
+    if (password != confirm_password) {
+        $('#message').html('Not Matching').css('color', 'red');
+    } else {
+        $('#message').html('Matched').css('color', 'green');
+    }
+}
 function saveNewCustomer() {
     var email = $("#email").val();
     var phone = $("#phone").val();

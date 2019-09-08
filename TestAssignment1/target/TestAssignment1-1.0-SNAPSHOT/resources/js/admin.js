@@ -1,9 +1,28 @@
 function loadImageFromUrl() {
     $('#my_image').attr('src', $('#image').val());
 }
+function confirmPassword() {
+    var password = $("#oldPassword").val();
+    var confirm_password = $("#confirmOld").val();
+    if (password != confirm_password) {
+        $('#messageOld').html('Not Matching').css('color', 'red');
+    } else {
+        $('#messageOld').html('Matched').css('color', 'green');
+    }
+}
+function confirmNewPassword() {
+    var password = $("#newPassword").val();
+    var confirm_password = $("#confirmNew").val();
+    if (password != confirm_password) {
+        $('#messageNew').html('Not Matching').css('color', 'red');
+    } else {
+        $('#messageNew').html('Matched').css('color', 'green');
+    }
+}
 function loadClipFromUrl() {
-    var id = $('#trailer').val().split('watch?v=')[1];
-    $('#trailer-content').attr("src", "http://www.youtube.com/embed/" + id);
+    var id = $('#trailer-content').val().split('watch?v=')[1];
+    $('#trailer').attr("src", "http://www.youtube.com/embed/" + id);
+    $('#trailer-info').val("http://www.youtube.com/embed/" + id);
 }
 function manageMovie() {
     $.ajax({
@@ -71,7 +90,7 @@ function updateMovie(id) {
     var date = $("#date").val();
     var language = $("#language").val();
     var description = $("#description").val();
-    var trailer = $("#trailer").val();
+    var trailer = $("#trailer-info").val();
     $.ajax({
         type: 'GET',
         url: "updateMovie",

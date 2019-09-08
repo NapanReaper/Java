@@ -104,10 +104,11 @@
             <input type="text" class="form-control" 
                    aria-label="Sizing example input" 
                    aria-describedby="inputGroup-sizing-default"
-                   value="${movie.trailer}" id="trailer" onchange="loadClipFromUrl()"/>
+                   value="${movie.trailer}" id="trailer-content" onchange="loadClipFromUrl()"/>
         </div>
         <div>
-            <iframe width="200" height="200" id="trailer-content" 
+            <input type="hidden" id="trailer-info" />
+            <iframe width="200" height="200" id="trailer" 
                     src="${movie.trailer}" frameborder="0" allowfullscreen>
             </iframe>
         </div>

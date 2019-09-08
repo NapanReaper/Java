@@ -45,6 +45,17 @@ public class AdminController {
         return m;
     }
 
+    @RequestMapping(value = "changePassword", method = RequestMethod.POST)
+    public ModelAndView changePassword(@RequestParam("id") Long id,
+            @RequestParam("password") String password) {
+        ModelAndView m = loadAdminInfo(id);
+        Member mem = memRepo.findOne(id);
+        mem.setPassword(password);
+        memRepo.save(mem);
+        m.addObject("DONE", "Change Password Successful");
+        return m;
+    }
+
     @RequestMapping(value = "loadAdminInfo", method = RequestMethod.GET)
     public ModelAndView loadAdminInfo(@RequestParam("id") Long id) {
         ModelAndView m = new ModelAndView("admin-info");

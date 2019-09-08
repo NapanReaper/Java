@@ -15,17 +15,6 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>
         <script src="resources/js/login.js" type="text/javascript"></script>
-        <script>
-            function abc() {
-                var password = $("#password").val();
-                var confirm_password = $("#confirm").val();
-                if (password != confirm_password) {
-                    $('#message').html('Not Matching').css('color', 'red');
-                } else {
-                    $('#message').html('Matching').css('color', 'green');
-                }
-            }
-        </script>
         <style>
             .note
             {
@@ -91,7 +80,7 @@
                             <div class="form-group">
                                 <label>Confirm Password</label>
                                 <input type="password" class="form-control" placeholder="Confirm Password *"
-                                       id="confirm" onchange="abc();"/>
+                                       id="confirm" onchange="confirmPassword();"/>
                                 <span id='message'></span>
                             </div>
                         </div>
