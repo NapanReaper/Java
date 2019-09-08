@@ -18,8 +18,8 @@
         <br/>
         <c:if test="${not empty movieList}" var="checkMovieList"> 
             <c:forEach var="m" items="${movieList}">
-                <div class="card bg-light mb-3" style="width: 18rem;float: left;margin-left: 50px;margin-top: 20px" >
-                    <img class="card-img-top" src="${m.image}" alt="Card image cap" width="200px" height="225px">
+                <div class="card bg-light mb-3" style="width: 14rem;float: left;margin-left: 50px;margin-top: 20px;" >
+                    <img class="card-img-top" src="${m.image}" alt="Card image cap"  height="200px">
                     <div class="card-body">
                         <h5 class="card-title">${m.title}</h5>
                         <p class="card-text">${m.description}</p>

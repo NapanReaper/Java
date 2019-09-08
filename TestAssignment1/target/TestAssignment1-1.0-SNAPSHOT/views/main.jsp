@@ -13,10 +13,10 @@
         <title>Home Page</title>     
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>  
     </head>
-    <body>     
+    <body>
+        <jsp:include page="header.jsp"></jsp:include>
         <input style="float: right;margin-right: 50px;width: 30%" 
                type="text" id="searchMovie" onkeyup="loadMovie();" placeholder="Search..."/>    
-        <a href="listMovieByDate">Xem lịch chiếu</a>
 
         <div style="width: 100%" id="movie-list">
 

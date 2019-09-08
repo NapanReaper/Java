@@ -11,20 +11,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     </head>
-    <body>     
+    <body>
+
+        <jsp:include page="header.jsp"></jsp:include>
         Date: <input type="date" id="scheduleDate" onchange="loadMovie();" >
-             <div id="movie-list" >
-                 
-             </div>
-              <script>
+        <div id="movie-list" >
+
+        </div>
+        <script>
             function loadMovie() {
                 var search = $("#scheduleDate").val();
                 $.ajax({
                     type: 'POST',
                     url: "movieByDate",
-                    data: {search : search},
+                    data: {search: search},
                     success: function (a) {
                         $("#movie-list").html(a);
                     }
@@ -34,6 +36,6 @@
                 loadMovie();
             });
         </script>
- 
+
     </body>
 </html>

@@ -15,6 +15,7 @@
         <script src="resources/js/admin.js" type="text/javascript"></script>
     </head>
     <body>
+        <jsp:include page="admin-header.jsp"></jsp:include>
         <h1>${member.role}'s Page</h1>
         <div style="float:left;margin-left: 50px;height: 100%"  >
             <div style="float:left; width: fit-content;padding-bottom: 20px">
