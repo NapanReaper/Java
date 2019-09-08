@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -46,7 +47,7 @@ public class Schedule {
     @Column(name = "CNM_S_5")
     private String t5;
 
-    @Column(name = "CNM_DTE")
+    @Column(name = "CNM_DTE") 
     private Date date;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "MOV_ID", referencedColumnName = "MOV_ID")

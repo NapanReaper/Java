@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -37,7 +38,7 @@
                                                 <img src="${m.image}" alt="MoviePic" class="w-100" />
                                             </div>
                                             <p class="tagline card-text text-xs-center">Thể loại: ${m.category}</p>
-                                            <p class="tagline card-text text-xs-center">Ngày khởi chiếu: ${m.date}</p>
+                                            <p class="tagline card-text text-xs-center">Ngày khởi chiếu: <fmt:formatDate value="${m.date}" pattern="dd-MMM-yy"/></p>
                                             <a href="${m.id}" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Xem Chi Tiết</a>
                                             <a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
                                         </div>
