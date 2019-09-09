@@ -107,7 +107,7 @@
                    value="${movie.trailer}" id="trailer-content" onchange="loadClipFromUrl()"/>
         </div>
         <div>
-            <input type="hidden" id="trailer-info" />
+            <input type="hidden" id="trailer-info" value="${movie.trailer}"/>
             <iframe width="200" height="200" id="trailer" 
                     src="${movie.trailer}" frameborder="0" allowfullscreen>
             </iframe>

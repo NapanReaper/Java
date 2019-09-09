@@ -118,7 +118,7 @@ function createMovie() {
     var date = $("#date").val();
     var language = $("#language").val();
     var description = $("#description").val();
-    var trailer = $("#trailer").val();
+    var trailer = $("#trailer-info").val();
     $.ajax({
         type: 'GET',
         url: "createMovie",
