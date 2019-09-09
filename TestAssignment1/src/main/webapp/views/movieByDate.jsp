@@ -11,22 +11,33 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="resources/css/movieByDate.css">
     </head>
     <body>
-        <c:forEach var="c" items="${movieByDate}">
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>${c.movie_shedule.title}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>${c.t1}</td></tr>
-                <tr><td>${c.t2}</td></tr>
-                <tr><td>${c.t3}</td></tr>
-                <tr><td>${c.t4}</td></tr>               
-            </tbody>
-        </table>
-        </c:forEach>
+        <div class="container">
+    <div class="row row-flex">
+        <c:if test="${not empty movieByDate}">
+          <c:forEach var="c" items="${movieByDate}">
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="price-table pt-bg-green">
+                <div>
+                    <span>${c.movie_shedule.title}</span>           
+                </div>
+                <ul>
+                    <li>${c.t1}</li>
+                    <li>${c.t2}</li>
+                    <li>${c.t3}</li>
+                    <li>${c.t4}</li>
+                    <li>${c.t5}</li>
+                </ul>        
+            </div>
+        </div>
+              </c:forEach>
+    </c:if>
+        <c:if test="${empty movieByDate}">
+            <h2> Không có phim nào chiếu vào ngày bạn chọn </h2>
+        </c:if>
+    </div>
+        </div>
     </body>
 </html>
