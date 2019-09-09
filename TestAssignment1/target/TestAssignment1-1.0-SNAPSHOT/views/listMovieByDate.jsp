@@ -12,11 +12,32 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Trang tìm kiếm</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+            }
+
+            .bg {
+                /* The image used */
+                background-image: url("resources/image/movie.png");
+
+                /* Full height */
+                height: 100%; 
+
+                /* Center and scale the image nicely */
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
     </head>
     <body>
         <jsp:include page="header.jsp"></jsp:include>
-        Chọn ngày <input type="date" id="scheduleDate" onchange="loadMovie();" >
-        <div id="movie-list" >
+        <div class="bg">
+            <h3 style="color: red">Chọn ngày</h3> <input type="date" id="scheduleDate" onchange="loadMovie();" >
+            <div id="movie-list" >
+            </div>
 
         </div>
         <script>
@@ -30,7 +51,7 @@
                         $("#movie-list").html(a);
                     }
                 });
-            }           
+            }
         </script>
 
     </body>

@@ -13,14 +13,33 @@
         <title>Home Page</title>
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+            }
+
+            .bg {
+                /* The image used */
+                background-image: url("resources/image/movie.png");
+
+                /* Full height */
+                height: 100%; 
+
+                /* Center and scale the image nicely */
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
     </head>
     <body>
         <jsp:include page="header.jsp"></jsp:include>
         <input class="form-control mr-sm-2" style="float: right;margin-right: 90px;width: 30%"
                type="text" id="searchMovie" onkeyup="loadMovie();" placeholder="Nhập tên phim cần tìm..."/>
-
-        <div style="width: 100%" id="movie-list">
-
+        <div class="bg">
+            <div style="width: 100%" id="movie-list">
+            </div>
         </div>
         <script>
             function loadMovie() {
