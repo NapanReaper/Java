@@ -54,9 +54,13 @@
                 border: 1px solid #ccc;
                 border-top: none;
             }
+            .bg{
+                background-image: url("resources/image/movie.png");
+            }
         </style>
     </head>
-    <body>
+    <body class="bg">
+        <jsp:include page="header.jsp"></jsp:include>
         <div class="container">
             <c:set var="d" value="${movieDetail}"/>
             <div class="row">
@@ -97,7 +101,7 @@
                         </div>
 
                         <div id="description" style="display: block" class="tabcontent">
-                            <h3>${d.description}</h3>                                         
+                            <h3 style="color: cornsilk">${d.description}</h3>                                         
                         </div>
 
                         <div id="trailer" class="tabcontent">
@@ -132,6 +136,7 @@
             </div>
 
         </div>
+  
         <script>
             function openCity(evt, cityName) {
                 var i, tabcontent, tablinks;
