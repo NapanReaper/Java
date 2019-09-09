@@ -15,14 +15,14 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     </head>
-    <body>
+    <body class="bg">
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" rel="stylesheet">
         <header class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
 
         </header>
         <main class="container">
             <section class="movies" id="movies">
-                <h2>Now Showing Movies</h2>
+                <h2 style="color: red;margin-right: 50px">Now Showing Movies</h2>
                 <c:if test="${not empty listMovie}">
 
                     <div class="row">

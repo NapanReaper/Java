@@ -35,8 +35,8 @@
     <body>
         <jsp:include page="header.jsp"></jsp:include>
         <div class="bg">
-            <h3 style="color: red">Chọn ngày</h3> <input type="date" id="scheduleDate" onchange="loadMovie();" >
-            <div id="movie-list" >
+            <h1 style="color: red;margin-left: 800">Chọn ngày</h3> <input style="margin-left: 680;width: 31%" type="date" id="scheduleDate" onchange="loadMovie();" >
+            <div style="margin-left: 600" id="movie-list" >
             </div>
 
         </div>
