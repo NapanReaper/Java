@@ -10,8 +10,8 @@ package com.sam.testassignment1.dtos;
  * @author hoang
  */
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +20,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -46,9 +51,6 @@ public class Movies implements Serializable {
     @Column(name = "MOV_LEN")
     private int length;
 
-    @Column(name = "MOV_CAT")
-    private String category;
-
     @Column(name = "MOV_LANG")
     private String language;
 
@@ -69,6 +71,14 @@ public class Movies implements Serializable {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "movie_shedule")
     private List<Schedule> listSchedule;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "movie_category",
+            joinColumns = {
+                @JoinColumn(name = "fk_movie")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "fk_category")})
+    private Set<Category> categories = new HashSet<Category>();
 
     public Movies() {
     }
@@ -97,7 +107,7 @@ public class Movies implements Serializable {
         this.title = title;
     }
 
-    public Date getDate() {     
+    public Date getDate() {
         return date;
     }
 
@@ -113,12 +123,12 @@ public class Movies implements Serializable {
         this.length = length;
     }
 
-    public String getCategory() {
-        return category;
+    public Set<Category> getCategories() {
+        return categories;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 
     public String getLanguage() {

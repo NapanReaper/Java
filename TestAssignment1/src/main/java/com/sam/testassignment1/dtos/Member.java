@@ -5,7 +5,6 @@
  */
 package com.sam.testassignment1.dtos;
 
-import com.sun.istack.internal.NotNull;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -36,7 +34,6 @@ public class Member implements Serializable {
     private String email;
     @Column(name = "ROLE", nullable = false)
     private String role;
-    @NotNull
     @Column(name = "STATUS", columnDefinition = "bit default 0")
     private boolean status;
     @Column(name = "MESSAGE")

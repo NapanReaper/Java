@@ -77,7 +77,7 @@
                                         </div>
                                         <ul>
                                             <li>Khởi chiếu:<fmt:formatDate value="${d.date}" pattern="dd-MMM-yy"/></li>
-                                            <li>Loại phim: ${d.category}</li>
+                                            <li>Loại phim: </li>
                                             <li>Diễn viên: ${d.cast}</li>
                                             <li>Thời lượng: ${d.length}</li>
                                             <li>Ngôn ngữ: ${d.language}</li>

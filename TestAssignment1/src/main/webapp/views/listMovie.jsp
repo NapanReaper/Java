@@ -37,7 +37,7 @@
                                             <div class="img-card">
                                                 <img src="${m.image}" alt="MoviePic" class="w-100" />
                                             </div>
-                                            <p class="tagline card-text text-xs-center">Thể loại: ${m.category}</p>
+                                            <!--<p class="tagline card-text text-xs-center">Thể loại: ${m.category}</p>-->
                                             <p class="tagline card-text text-xs-center">Ngày khởi chiếu: <fmt:formatDate value="${m.date}" pattern="dd-MMM-yy"/></p>
                                             <a href="${m.id}" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Xem Chi Tiết</a>
                                             <a href="#" style="background: red" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>

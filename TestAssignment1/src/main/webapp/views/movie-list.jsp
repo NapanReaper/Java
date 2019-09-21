@@ -25,7 +25,6 @@
                         <p class="card-text">${m.description}</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><p>Category: ${m.category}</p></li>
                         <li class="list-group-item"><p>Length: ${m.length} minutes</p></li>
                         <li class="list-group-item">
                             <p>Status: 
@@ -36,6 +35,15 @@
                                     <span class="badge badge-danger">Not Active</span>
                                 </c:if>                            
                             </p>
+                        </li>
+                        <li class="list-group-item">
+                            <p>Category: </p> 
+                            <select name="category" multiple="multiple">
+                                <c:forEach var="c" items="${m.categories}">
+                                    <option value="${c.id}">${c.name}</option>                                   
+                                </c:forEach>
+                            </select>
+
                         </li>
                     </ul>
                     <div class="card-body" style="border: 1">

@@ -1,3 +1,10 @@
+$(function () {
+    $("#myList").on("click", "option", function () {
+        var selectedValues = $("#myList").val();
+        alert(selectedValues.join(', '));
+    });
+});
+
 function loadImageFromUrl() {
     $('#my_image').attr('src', $('#image').val());
 }

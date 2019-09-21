@@ -7,11 +7,14 @@ package com.sam.testassignment1.controllers;
 
 import com.sam.testassignment1.dtos.Member;
 import com.sam.testassignment1.dtos.Movies;
+import com.sam.testassignment1.repositories.CategoryRepository;
 import com.sam.testassignment1.repositories.MemberRepository;
 import com.sam.testassignment1.repositories.MovieRepository;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import jdk.nashorn.internal.runtime.JSType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,11 +33,16 @@ public class AdminController {
     private MovieRepository movieRepo;
     @Autowired
     private MemberRepository memRepo;
+    @Autowired
+    private CategoryRepository cateRepo;
 
     @RequestMapping(value = "manageMovie", method = RequestMethod.GET)
     public ModelAndView getMovieList() {
         ModelAndView m = new ModelAndView("movie-list");
-        m.addObject("movieList", movieRepo.findAll());
+        List<Movies> listMovie = movieRepo.findAll();
+        m.addObject("movieList", listMovie);
+        Movies product = movieRepo.findOne(Long.valueOf("1"));
+        m.addObject("category", product.getCategories());
         return m;
     }
 
@@ -66,6 +74,7 @@ public class AdminController {
     @RequestMapping(value = "loadMovieForm", method = RequestMethod.GET)
     public ModelAndView loadMovieForm() {
         ModelAndView m = new ModelAndView("movie-form");
+        m.addObject("category", cateRepo.findAll());
         return m;
     }
 
@@ -125,7 +134,7 @@ public class AdminController {
         Movies m = movieRepo.findOne(id);
         m.setTitle(title);
         m.setCast(cast);
-        m.setCategory(category);
+//        m.setCategory(category);
         m.setDescription(description);
         m.setImage(image);
         m.setLanguage(language);
@@ -152,7 +161,7 @@ public class AdminController {
         m.setStatus(true);
         m.setTitle(title);
         m.setCast(cast);
-        m.setCategory(category);
+//        m.setCategory(category);
         m.setDescription(description);
         m.setImage(image);
         m.setLanguage(language);
